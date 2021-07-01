@@ -8,8 +8,8 @@
       <h3>Clients</h3>
          @foreach (var client in Model)
          {
-           <div>@client.Name - @client.ContactName</div>
-           <div>Phone: @client.Phone</div>
+           <div>@client.Name - @client.Phone</div>
+           <div>@client.CityTown - @client.StateProvince</div>      
          }
     </div>
   </div>

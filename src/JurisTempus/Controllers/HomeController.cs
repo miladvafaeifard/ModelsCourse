@@ -30,7 +30,7 @@ namespace JurisTempus.Controllers
     public IActionResult Index()
     {
       var result = _context.Clients
-        //.Include(c => c.Address)
+        .Include(c => c.Address)
         .ToArray();
       var vms = _mapper.Map<ClientViewModel[]>(result);
 
