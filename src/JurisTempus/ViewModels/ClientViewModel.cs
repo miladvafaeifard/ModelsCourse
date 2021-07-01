@@ -1,5 +1,5 @@
 using System;
-using JurisTempus.Data.Entities;
+using System.Collections.Generic;
 
 namespace JurisTempus.ViewModels
 {
@@ -16,5 +16,7 @@ namespace JurisTempus.ViewModels
     public string StateProvince { get; set; }
     public string PostalCode { get; set; }
     public string Country { get; set; }
+
+    public ICollection<CaseViewModel> Cases { get; set; }
   }
 }

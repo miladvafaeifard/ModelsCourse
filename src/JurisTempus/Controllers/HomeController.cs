@@ -31,6 +31,7 @@ namespace JurisTempus.Controllers
     {
       var result = _context.Clients
         .Include(c => c.Address)
+        .Include(c => c.Cases)
         .ToArray();
       var vms = _mapper.Map<ClientViewModel[]>(result);
 

@@ -4,12 +4,16 @@
 @model ClientViewModel[]
 
   <div class="row">
-     <div class="col-8 offset-2">
-      <h3>Clients</h3>
-         @foreach (var client in Model)
-         {
-           <div>@client.Name - @client.Phone</div>
-           <div>@client.CityTown - @client.StateProvince</div>      
-         }
-    </div>
+      <div class="col-8 offset-2">
+          <h3>Clients</h3>
+          @foreach (var client in Model)
+          {
+              <div>@client.Name - @client.Phone</div>
+              <div>@client.CityTown - @client.StateProvince</div>
+              @foreach (var clientCase in client.Cases)
+              {
+                  <div>@clientCase.FileNumber</div>
+              }
+          }
+      </div>
   </div>

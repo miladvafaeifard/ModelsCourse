@@ -19,6 +19,9 @@ namespace JurisTempus.Profiles
         .ForMember(d => d.PostalCode, opts => opts.MapFrom(src => src.Address.PostalCode))
         .ForMember(d => d.StateProvince, opts => opts.MapFrom(src => src.Address.StateProvince))
         .ReverseMap();
+
+      CreateMap<Case, CaseViewModel>()
+        .ReverseMap();
     }
   }
 }
