@@ -10,10 +10,19 @@
           {
               <div>@client.Name - @client.Phone</div>
               <div>@client.CityTown - @client.StateProvince</div>
-              @foreach (var clientCase in client.Cases)
-              {
-                  <div>@clientCase.FileNumber</div>
-              }
+              <ul>
+                  @foreach (var clientCase in client.Cases)
+                  {
+                      <li>@clientCase.FileNumber</li>
+                  }
+              </ul>
+              <a asp-action="ClientEditor"
+                 asp-route-id="@client.Id"
+                 class="btn btn-sm btn-primary">
+                  Edit
+              </a>
           }
       </div>
+
+      
   </div>
