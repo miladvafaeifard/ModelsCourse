@@ -3,23 +3,28 @@
 @{
     ViewData["Title"] = "Contact";
 }
+@section Scripts {
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
 <h1>Contact</h1>
 <form method="post">
-  <div class="form-group">
-    <label >Email:</label>
-    <input class="form-control" />
-  </div>
-  <div class="form-group">
-    <label >Subject: </label>
-    <input class="form-control" />
-  </div>
-  <div class="form-group">
-    <label>Message:</label>
-    <textarea class="form-control" rows="5"></textarea>
-  </div>
-  <div class="form-group">
-    <a href="/" class="btn btn-info">Cancel</a>
-    <input type="submit" class="btn btn-success" value="Send" />
-  </div>
+    <div asp-validation-summary="All"></div>
+    <div class="form-group">
+        <label asp-for="ViewModel.Email">Email:</label>
+        <input asp-for="ViewModel.Email" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="ViewModel.Subject">Subject: </label>
+        <input asp-for="ViewModel.Subject" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Message:</label>
+        <textarea asp-for="ViewModel.Message" class="form-control" rows="5"></textarea>
+    </div>
+    <div class="form-group">
+        <a href="/" class="btn btn-info">Cancel</a>
+        <input type="submit" class="btn btn-success" value="Send" />
+    </div>
 </form>
 
