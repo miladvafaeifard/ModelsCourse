@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
+using FluentValidation.AspNetCore;
 using JurisTempus.Data;
+using JurisTempus.Validators;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -36,7 +38,8 @@ namespace JurisTempus
       services.AddAutoMapper(Assembly.GetExecutingAssembly());
       services.AddRazorPages();
       services.AddControllersWithViews()
-        .AddNewtonsoftJson(cfg => cfg.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
+        .AddNewtonsoftJson(cfg => cfg.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore)
+        .AddFluentValidation(cfg => cfg.RegisterValidatorsFromAssemblyContaining<CaseViewModelValidator>());
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

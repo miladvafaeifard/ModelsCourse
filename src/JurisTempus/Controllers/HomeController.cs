@@ -9,11 +9,12 @@ using JurisTempus.Data;
 using Microsoft.EntityFrameworkCore;
 using JurisTempus.ViewModels;
 using AutoMapper;
+using JurisTempus.Data.Entities;
 
 namespace JurisTempus.Controllers
 {
   public class HomeController : Controller
-  {
+ {
     private readonly ILogger<HomeController> _logger;
     private readonly BillingContext _context;
     private readonly IMapper _mapper;
@@ -52,20 +53,34 @@ namespace JurisTempus.Controllers
     [HttpPost("editor/{id:int}")]
     public async Task<IActionResult> ClientEditor(int id, ClientViewModel clientViewModel)
     {
-      var client = await _context.Clients
-        .Include(c => c.Address)
-        .Where(c => c.Id == id)
-        .FirstOrDefaultAsync();
-
-      if (client != null)
+      if (ModelState.IsValid)
       {
-        _mapper.Map(clientViewModel, client);
+        var client = await _context.Clients
+          .Include(c => c.Address)
+          .Where(c => c.Id == id)
+          .FirstOrDefaultAsync();
+
+        if (client != null)
+        {
+          // Update the database
+          _mapper.Map(clientViewModel, client);
+          if (await _context.SaveChangesAsync() > 0)
+          {
+            return RedirectToAction("Index");
+          }
+        }
+      }
+      else
+      {
+        // Create a new one
+        var newClient = _mapper.Map<Client>(clientViewModel);
+        _context.Add(newClient);
+
         if (await _context.SaveChangesAsync() > 0)
         {
           return RedirectToAction("Index");
         }
       }
-
 
       return View();
     }

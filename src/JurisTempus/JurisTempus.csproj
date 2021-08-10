@@ -24,6 +24,8 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.5" />
     <PackageReference Include="AutoMapper" Version="10.1.1" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
+    <PackageReference Include="FluentValidation" Version="10.3.0" />
+    <PackageReference Include="FluentValidation.AspNetCore" Version="10.3.0" />
   </ItemGroup>
 
 
@@ -35,11 +37,15 @@
   <ItemGroup>
     <Folder Include="client\node_modules\" />
     <Folder Include="Profiles\" />
+    <Folder Include="Validators\" />
   </ItemGroup>
 
   <ItemGroup>
     <None Remove="Profiles\" />
     <None Remove="AutoMapper" />
     <None Remove="AutoMapper.Extensions.Microsoft.DependencyInjection" />
+    <None Remove="Validators\" />
+    <None Remove="FluentValidation" />
+    <None Remove="FluentValidation.AspNetCore" />
   </ItemGroup>
 </Project>

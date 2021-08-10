@@ -5,6 +5,11 @@
 
   <div class="row">
       <div class="col-8 offset-2">
+          <a asp-action="ClientEditor"
+             asp-route-id="0"
+             class="btn btn-success">
+              New Client
+          </a>
           <h3>Clients</h3>
           @foreach (var client in Model)
           {
