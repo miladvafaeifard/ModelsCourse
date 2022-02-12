@@ -22,6 +22,11 @@ namespace JurisTempus.Profiles
 
       CreateMap<Case, CaseViewModel>()
         .ReverseMap();
+
+      CreateMap<TimeBill, TimeBillViewModel>()
+        .ForMember(d => d.CaseId, opts => opts.MapFrom(src => src.Case.Id))
+        .ForMember(d => d.EmployeeId, opts => opts.MapFrom(src => src.Employee.Id))
+        .ReverseMap();
     }
   }
 }
