@@ -32,6 +32,7 @@ namespace JurisTempus.Controllers
     }
 
     [HttpGet]
+    // [ApiConventionMethod()]
     public async Task<ActionResult<TimeBillViewModel[]>> Get()
     {
       var result = await _ctx.TimeBills
